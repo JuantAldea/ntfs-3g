@@ -1,4 +1,4 @@
-# Introduction
+# WARNING
 
 This is a hacky, modified, version of the NTFS-3g driver that allows mounting a
 NTFS filesystem with its NTFS Master File Table (MFT) corrupted, meaning that
