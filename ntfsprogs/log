@@ -1,0 +1,23 @@
+PhotoRec 7.1-WIP, Data Recovery Utility, August 2016
+Christophe GRENIER <grenier@cgsecurity.org>
+http://www.cgsecurity.org
+
+Disk /dev/sdd1 - 1000 GB / 931 GiB (RO) - WD My Passport 07A8
+     Partition                  Start        End    Size in sectors
+   P NTFS                     0   0  1 121597   5  8 1953456128 [My Passport]
+
+Destination /mnt/misc/broza_maite/recup_dir
+
+Pass 1 - Reading sector   42037408/1953456128, 5877 files found
+Elapsed time 124h18m41s - Estimated time to completion 5652h22m23
+jpg: 5114 recovered
+png: 378 recovered
+txt: 120 recovered
+doc: 74 recovered
+exe: 62 recovered
+tx?: 51 recovered
+lnk: 16 recovered
+pdf: 16 recovered
+apple: 12 recovered
+riff: 9 recovered
+others: 25 recovered
