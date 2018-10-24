@@ -6,4 +6,7 @@ the MFT and the MFTMirror do not match. The mentioned corruption makes your
 Windows system happily ask you if you want to format your drive because it is 
 "unreadable".
 
+See https://en.wikipedia.org/wiki/NTFS#Master_File_Table for some information
+about the MFT.
+
 Hopping this will save the life os someone as it did to me :D
