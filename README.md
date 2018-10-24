@@ -7,5 +7,3 @@ Windows system happily ask you if you want to format your drive because it is
 "unreadable".
 
 Hopping this will save the life os someone as it did to me :D
-
-Find a copy of the original README on README.ntfs3g
