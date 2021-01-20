@@ -1,0 +1,53 @@
+--- ntfs-3g_ntfsprogs-2016.2.22/libntfs-3g/volume.c	2016-02-22 08:34:33.000000000 +0100
++++ ntfs-3g/libntfs-3g/volume.c	2016-10-17 19:49:39.187060840 +0200
+@@ -421,6 +421,7 @@
+  */
+ static int ntfs_mftmirr_load(ntfs_volume *vol)
+ {
++    return ntfs_mft_load(vol);
+ 	int err;
+ 
+ 	vol->mftmirr_ni = ntfs_inode_open(vol, FILE_MFTMirr);
+@@ -619,10 +620,12 @@
+ 	}
+ 
+ 	/* Need to setup $MFTMirr so we can use the write functions, too. */
++    /*
+ 	if (ntfs_mftmirr_load(vol) < 0) {
+ 		ntfs_log_perror("Failed to load $MFTMirr");
+ 		goto error_exit;
+ 	}
++    */
+ 	return vol;
+ error_exit:
+ 	eo = errno;
+@@ -925,8 +928,7 @@
+ 	if (!m || !m2)
+ 		goto error_exit;
+ 
+-	l = ntfs_attr_mst_pread(vol->mft_na, 0, vol->mftmirr_size,
+-			vol->mft_record_size, m);
++	l = ntfs_attr_mst_pread(vol->mft_na, 0, vol->mftmirr_size, vol->mft_record_size, m);
+ 	if (l != vol->mftmirr_size) {
+ 		if (l == -1)
+ 			ntfs_log_perror("Failed to read $MFT");
+@@ -938,8 +940,8 @@
+ 		}
+ 		goto error_exit;
+ 	}
+-	l = ntfs_attr_mst_pread(vol->mftmirr_na, 0, vol->mftmirr_size,
+-			vol->mft_record_size, m2);
++    //l = ntfs_attr_mst_pread(vol->mftmirr_na, 0, vol->mftmirr_size, vol->mft_record_size, m2);
++	l = ntfs_attr_mst_pread(vol->mft_na, 0, vol->mftmirr_size, vol->mft_record_size, m2);
+ 	if (l != vol->mftmirr_size) {
+ 		if (l == -1) {
+ 			ntfs_log_perror("Failed to read $MFTMirr");
+@@ -1813,7 +1815,7 @@
+ 	ret = -1; /* default return */
+ 	vol->free_clusters = ntfs_attr_get_free_bits(vol->lcnbmp_na);
+ 	if (vol->free_clusters < 0) {
+-		ntfs_log_perror("Failed to read NTFS $Bitmap");
++		ntfs_log_perror("Failed to read NTFS $Bitmap ntfs_volume_get_free_space");
+ 	} else {
+ 		na = vol->mftbmp_na;
+ 		vol->free_mft_records = ntfs_attr_get_free_bits(na);

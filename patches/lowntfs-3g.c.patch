@@ -1,0 +1,11 @@
+--- ntfs-3g_ntfsprogs-2016.2.22/src/lowntfs-3g.c	2016-02-22 08:34:33.000000000 +0100
++++ ntfs-3g/src/lowntfs-3g.c	2016-10-16 14:50:39.517099854 +0200
+@@ -3712,7 +3712,7 @@
+ 	if (ctx->ignore_case && ntfs_set_ignore_case(vol))
+ 		goto err_out;
+         
+-	vol->free_clusters = ntfs_attr_get_free_bits(vol->lcnbmp_na);
++	vol->free_clusters = 1;//ntfs_attr_get_free_bits(vol->lcnbmp_na);
+ 	if (vol->free_clusters < 0) {
+ 		ntfs_log_perror("Failed to read NTFS $Bitmap");
+ 		goto err_out;

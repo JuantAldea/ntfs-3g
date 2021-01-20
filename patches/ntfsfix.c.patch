@@ -1,0 +1,19 @@
+--- ntfs-3g_ntfsprogs-2016.2.22/ntfsprogs/ntfsfix.c	2016-02-22 08:34:33.000000000 +0100
++++ ntfs-3g/ntfsprogs/ntfsfix.c	2016-10-17 19:50:31.463983911 +0200
+@@ -443,13 +443,15 @@
+ 	ntfs_log_info("Reading $MFTMirr... ");
+ 	l = ntfs_attr_mst_pread(vol->mftmirr_na, 0, vol->mftmirr_size,
+ 			vol->mft_record_size, m2);
+-	if (l != vol->mftmirr_size) {
++	/*
++    if (l != vol->mftmirr_size) {
+ 		ntfs_log_info(FAILED);
+ 		if (l != -1)
+ 			errno = EIO;
+ 		ntfs_log_perror("Failed to read $MFTMirr");
+ 		goto error_exit;
+ 	}
++    */
+ 	ntfs_log_info(OK);
+ 
+ 	/*
